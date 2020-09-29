@@ -10,3 +10,6 @@ router.post( "/coupons",
    requireAuthUser(),
    commonController.postCoupons);
 
+   router.get( "/coupons", 
+   requireAuthUser(),
+   commonController.getCoupons);

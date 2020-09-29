@@ -22,8 +22,29 @@ const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 class StripeApi {
     static postCoupon(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            const coupon = yield stripe.coupons.create(obj);
-            console.log("coupon : ", coupon);
+            try {
+                const coupon = yield stripe.coupons.create(obj);
+                console.log("coupon : ", coupon);
+            }
+            catch (_a) {
+                throw Error("Error Occured");
+            }
+        });
+    }
+    static getCoupons() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const coupon = yield stripe.coupons.list({
+                    limit: 3,
+                });
+                ;
+                console.log("coupon : ", coupon);
+                return coupon;
+            }
+            catch (_a) {
+                throw Error("Error Occured while getting coupons");
+                return -1;
+            }
         });
     }
 }

@@ -11,7 +11,18 @@ export class commonController {
             duration: 'repeating',
             duration_in_months: 3,
           })
-        res.send('Coupnons Sent Successfully');
+        res.send('Coupon Sent Successfully');
+    }
+
+    static async getCoupons(req:Request,res:Response,next:NextFunction) {
+        const response = await StripeApi.getCoupons();
+        if(response !== -1) {
+            res.send('Coupons Get Successfully');
+        } else {
+            res.send('Error Occured');
+        }
+        
+        
     }
 }
 

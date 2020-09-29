@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  apiDomain = 'http://localhost:8080';
+  apiDomain = 'serene-citadel-01484.herokuapp.com';
 
   helloWorld() {
     debugger
@@ -22,6 +22,15 @@ export class ApiService {
     debugger
     try {
       return this.http.post(`${this.apiDomain}/coupons`,'jimi').toPromise();
+    } catch {
+      throw Error;
+    }
+  }
+
+  getCoupons() {
+    debugger
+    try {
+      return this.http.get(`${this.apiDomain}/coupons`).toPromise();
     } catch {
       throw Error;
     }

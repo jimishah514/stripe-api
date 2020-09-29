@@ -10,6 +10,7 @@ export class AppComponent {
  constructor(private api: ApiService) {
    debugger
    this.api.helloWorld();
-   this.api.postCoupons();
+   //this.api.postCoupons();
+   this.api.getCoupons();
  }
 }

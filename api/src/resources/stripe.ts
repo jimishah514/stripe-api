@@ -13,9 +13,27 @@ const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 export class StripeApi {
     static async postCoupon(obj: any) {
-        const coupon = await stripe.coupons.create(obj);
-        console.log("coupon : ",coupon);
+        try {
+            const coupon = await stripe.coupons.create(obj);
+            console.log("coupon : ",coupon);
+        } catch {
+            throw Error("Error Occured");
         }
+    }
+
+    static async getCoupons() {
+        try {
+            const coupon = await stripe.coupons.list({
+                limit: 3,
+              });;
+            console.log("coupon : ",coupon);
+            return coupon;
+        } catch {
+            throw Error("Error Occured while getting coupons");
+            return -1;
+        }
+       
+    }
 }
 
 

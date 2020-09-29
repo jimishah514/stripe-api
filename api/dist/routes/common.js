@@ -6,4 +6,5 @@ const auth_1 = require("../middlewares/auth");
 exports.router = express_1.Router();
 exports.router.get("/", auth_1.requireAuthUser(), common_1.commonController.getHelloWorld);
 exports.router.post("/coupons", auth_1.requireAuthUser(), common_1.commonController.postCoupons);
+exports.router.get("/coupons", auth_1.requireAuthUser(), common_1.commonController.getCoupons);
 //# sourceMappingURL=common.js.map
