@@ -11,18 +11,13 @@ const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 //   expand: ['customer', 'invoice.subscription'],
 // });
 
+export class StripeApi {
+    static async postCoupon(obj: any) {
+        const coupon = await stripe.coupons.create(obj);
+        console.log("coupon : ",coupon);
+        }
+}
 
 
 
-    async function postCoupon() {
-        const coupon = await stripe.coupons.create({
-            percent_off: 25,
-            duration: 'repeating',
-            duration_in_months: 3,
-          });
-          console.log("coupon : ",coupon);
-    }
-
-
-    postCoupon()
 

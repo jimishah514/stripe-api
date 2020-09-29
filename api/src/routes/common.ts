@@ -6,3 +6,7 @@ router.get( "/",
    requireAuthUser(),
    commonController.getHelloWorld);
 
+router.post( "/coupons", 
+   requireAuthUser(),
+   commonController.postCoupons);
+
