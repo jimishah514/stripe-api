@@ -2,9 +2,13 @@ const express = require( "express" );
 const app = express();
 const port = 8080; // default port to listen
 const cors =require('cors');
+var bodyParser = require('body-parser')
 import {router} from './routes/common';
 
-// define a route handler for the default home page
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 app.use(cors({
 origin:'*',
 methods: 'GET,POST,OPTIONS,DELETE,PUT'

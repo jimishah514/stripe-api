@@ -15,18 +15,15 @@ class commonController {
         res.send('Hello World');
     }
     static postCoupons(req, res, next) {
-        stripe_1.StripeApi.postCoupon({
-            percent_off: 25,
-            duration: 'repeating',
-            duration_in_months: 3,
-        });
-        res.send('Coupon Sent Successfully');
+        console.log("req body : ", req.body);
+        const coupon = stripe_1.StripeApi.postCoupon(req.body);
+        res.send(coupon);
     }
     static getCoupons(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield stripe_1.StripeApi.getCoupons();
             if (response !== -1) {
-                res.send('Coupons Get Successfully');
+                res.send(response);
             }
             else {
                 res.send('Error Occured');

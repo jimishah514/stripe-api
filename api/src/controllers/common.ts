@@ -6,18 +6,15 @@ export class commonController {
     }
 
     static postCoupons(req:Request,res:Response,next:NextFunction) {
-        StripeApi.postCoupon({
-            percent_off: 25,
-            duration: 'repeating',
-            duration_in_months: 3,
-          })
-        res.send('Coupon Sent Successfully');
+        console.log("req body : ",req.body)
+        const coupon = StripeApi.postCoupon(req.body);
+        res.send(coupon);
     }
 
     static async getCoupons(req:Request,res:Response,next:NextFunction) {
         const response = await StripeApi.getCoupons();
         if(response !== -1) {
-            res.send('Coupons Get Successfully');
+            res.send(response);
         } else {
             res.send('Error Occured');
         }
