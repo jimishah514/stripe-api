@@ -40,6 +40,19 @@ export class StripeApi {
         }
        
     }
+
+    static async deleteCoupon(id:any) {
+        try {
+            const deleted = await stripe.coupons.del(
+                id
+              );
+            return deleted;
+        } catch(e) {
+            throw Error(e.message);
+            return -1;
+        }
+       
+    }
 }
 
 

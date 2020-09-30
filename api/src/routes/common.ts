@@ -12,7 +12,12 @@ router.post( "/coupons",
    commonController.postCoupons
    );
 
-   router.get( "/coupons", 
+router.get( "/coupons", 
    requireAuthUser(),
    commonController.getCoupons
+   );
+
+router.delete( "/coupons/:id", 
+   requireAuthUser(),
+   commonController.deleteCoupon
    );

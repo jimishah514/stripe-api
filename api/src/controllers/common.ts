@@ -17,9 +17,18 @@ export class commonController {
             res.send(response);
         } else {
             res.send('Error Occured');
-        }
-        
-        
+        } 
+    }
+
+    static async deleteCoupon(req:Request,res:Response,next:NextFunction) {
+        console.log("req params : ",req.params)
+        const { id } = req.params;
+        const response = await StripeApi.deleteCoupon(id);
+        if(response !== -1) {
+            res.send(response);
+        } else {
+            res.send('Error Occured');
+        } 
     }
 }
 
