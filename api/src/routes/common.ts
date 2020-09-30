@@ -4,12 +4,15 @@ import { requireAuthUser } from '../middlewares/auth';
 export const router = Router();
 router.get( "/", 
    requireAuthUser(),
-   commonController.getHelloWorld);
+   commonController.getHelloWorld
+   );
 
 router.post( "/coupons", 
    requireAuthUser(),
-   commonController.postCoupons);
+   commonController.postCoupons
+   );
 
    router.get( "/coupons", 
    requireAuthUser(),
-   commonController.getCoupons);
+   commonController.getCoupons
+   );
