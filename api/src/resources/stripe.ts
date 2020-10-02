@@ -15,12 +15,24 @@ export class StripeApi {
     static async postCoupon(obj: any) {
         try {
             console.log("obj : ",obj);
-            const coupon = await stripe.coupons.create({  percent_off: obj.percent_off,
-                duration: obj.duration,
-                duration_in_months: obj.duration_in_months, 
-                }
-            );
-            console.log("coupon : ",coupon);
+            if (obj.duration_in_months == 0) {
+                const coupon = await stripe.coupons.create({  
+                    name: obj.name,
+                    percent_off: obj.percent_off,
+                    duration: obj.duration,
+                    }
+                );
+            }
+            else {
+                const coupon = await stripe.coupons.create({  
+                    name: obj.name,
+                    percent_off: obj.percent_off,
+                    duration: obj.duration,
+                    duration_in_months: obj.duration_in_months, 
+                    }
+                );
+            }
+            
         } catch(e) {
             throw Error(e.message);
         }
